@@ -23,6 +23,25 @@ func Year2020Day1Part1(filename string) string {
   return "no answer"
 }
 
+func Year2020Day1Part2(filename string) string {
+  inputInts := aoc_utils.ReadFileListOfInt(filename)
+  filteredInts := FilterInts(Part1Target, inputInts)
+
+  for _, valI := range filteredInts {
+    for j, valJ := range filteredInts {
+      for _, valK := range filteredInts[j:len(filteredInts)] {
+        if valI != valJ {
+          if valI + valJ + valK == Part1Target {
+            return strconv.Itoa(valI * valJ * valK)
+          }
+        }
+      }
+    }
+  }
+
+  return "no answer"
+}
+
 func FilterInts(maxInt int, allInts []int) []int {
   result := []int{}
   for i := range allInts {
