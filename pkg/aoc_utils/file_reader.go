@@ -8,7 +8,7 @@ import (
 
 func ReadFileListOfInt(filename string) []int {
   lines := ReadFileLines(filename)
-  ints := make([]int, len(lines) - 1)
+  ints := make([]int, len(lines))
   for i, line := range lines {
     if line != "" {
       num, _ := strconv.Atoi(line)
@@ -24,5 +24,5 @@ func ReadFileLines(filename string) []string {
       //Do something
   }
   lines := strings.Split(string(content), "\n")
-  return lines
+  return lines[0:len(lines)-1]
 }

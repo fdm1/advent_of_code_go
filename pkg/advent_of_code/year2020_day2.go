@@ -14,7 +14,7 @@ func Year2020Day2Part1(filename string) string {
     result = 0
   }
 
-  for _, inputLine := range inputLines[0:len(inputLines)-1] {
+  for _, inputLine := range inputLines {
     minCount, maxCount, char, password := ParseY20D2InputLine(inputLine)
     pwLength := len(password)
     charCount := pwLength - len(strings.Replace(password, char, "", -1))
