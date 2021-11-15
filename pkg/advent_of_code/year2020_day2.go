@@ -28,6 +28,30 @@ func Year2020Day2Part1(filename string) string {
   return strconv.Itoa(result)
 }
 
+func Year2020Day2Part2(filename string) string {
+  inputLines := aoc_utils.ReadFileLines(filename)
+  result := 0
+  if len(inputLines) > 0 {
+    result = 0
+  }
+
+  for _, inputLine := range inputLines {
+    index1, index2, char, password := ParseY20D2InputLine(inputLine)
+    index1 = index1 - 1
+    index2 = index2 - 1
+    if string(password[index1]) == char && string(password[index2]) != char {
+      result = result + 1
+    }
+    if string(password[index1]) != char && string(password[index2]) == char {
+      result = result + 1
+    }
+  }
+  if result == 0 {
+    return "no answer"
+  }
+  return strconv.Itoa(result)
+}
+
 func ParseY20D2InputLine(input string) (int, int, string, string) {
   spaceSplit := strings.Split(input, " ")
 

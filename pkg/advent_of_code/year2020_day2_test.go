@@ -16,6 +16,16 @@ func TestYear2020Day2Part1(t *testing.T) {
   }
 }
 
+func TestYear2020Day2Part2(t *testing.T) {
+  filename := aoc_utils.TestInput("puzzle_tests/year_2020_day_2")
+  result := Year2020Day2Part2(filename)
+  expected_result := "1"
+
+  if result != expected_result {
+    t.Fatalf("actual result %v != expected result %v", result, expected_result)
+  }
+}
+
 func TestParseY20D2InputLine(t *testing.T) {
   inputLine := "1-3 b: cdefg"
 
