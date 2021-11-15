@@ -8,15 +8,15 @@ import (
 )
 
 func main() {
-  fmt.Println("Year: ")
+  fmt.Printf("Year: ")
   var year string
   fmt.Scanln(&year)
 
-  fmt.Println("Day: ")
+  fmt.Printf("Day: ")
   var day string
   fmt.Scanln(&day)
 
-  fmt.Println("Part: ")
+  fmt.Printf("Part: ")
   var part string
   fmt.Scanln(&part)
 
@@ -24,6 +24,6 @@ func main() {
   function := advent_of_code.PuzzleMap(year, day, part)
   input := aoc_utils.InputFile(year, day)
   result := function(input)
-  fmt.Printf("Result: %v", result)
+  fmt.Printf("Result: %v\n", result)
 }
 
