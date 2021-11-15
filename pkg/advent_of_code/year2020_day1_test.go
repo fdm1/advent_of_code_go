@@ -9,7 +9,7 @@ import (
 func TestYear2020Day1Part1(t *testing.T) {
   filename := aoc_utils.TestInput("puzzle_tests/year_2020_day_1")
   result := Year2020Day1Part1(filename)
-  expected_result := 514579
+  expected_result := "514579"
 
   if result != expected_result {
     t.Fatalf("actual result %v != expected result %v", result, expected_result)
