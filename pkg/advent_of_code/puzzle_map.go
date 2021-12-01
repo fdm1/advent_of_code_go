@@ -8,6 +8,8 @@ func PuzzleMap(year string, day string, part string) func(string) string {
     "2020-1-2": Year2020Day1Part2,
     "2020-2-1": Year2020Day2Part1,
     "2020-2-2": Year2020Day2Part2,
+    "2021-1-1": Year2021Day1Part1,
+    "2021-1-2": Year2021Day1Part2,
   }
 
   return puzzleFunctions[fmt.Sprintf("%v-%v-%v", year, day, part)]
