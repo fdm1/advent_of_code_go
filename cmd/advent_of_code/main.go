@@ -4,7 +4,6 @@ import (
   "fmt"
 
   "github.com/fdm1/advent_of_code_go/pkg/advent_of_code"
-  "github.com/fdm1/advent_of_code_go/pkg/aoc_utils"
 )
 
 func main() {
@@ -22,8 +21,7 @@ func main() {
 
 
   function := advent_of_code.PuzzleMap(year, day, part)
-  input := aoc_utils.InputFile(year, day)
-  result := function(input)
+  result := function()
   fmt.Printf("Result: %v\n", result)
 }
 

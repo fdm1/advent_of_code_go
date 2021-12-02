@@ -10,6 +10,8 @@ Iterate through all `cmd` and `pkg` dirs, and run any tests that exist.
 
 ## Run a puzzle:
 
+Create a `.env` file to set `AOC_SESSION` (or set it in the environment), getting the session cookie from advent of code after logging in. This is required to download the input at runtime.
+
 Use the bin script to run a puzzle. It will prompt for a year, day, and part, and if a solution is attempted, it will return that result.
 
 ```
@@ -23,7 +25,6 @@ Use the bin script to run a puzzle. It will prompt for a year, day, and part, an
 
 ## Add new puzzle solutions
 
-- Add the input file to `puzzle_inputs` (formatted `year_<YEAR>_day_<DAY>.txt`)
-- Add the a test input file to `teest_inputs/puzzle_tests` (formatted `year_<YEAR>_day_<DAY>.txt`)
+- Add the a test input file to `test_inputs/puzzle_tests/<YEAR>_<DAY>.txt`)
 - Add a solution in a `.go` file in `pkg/advent_of_code`. The function to solve the problem must be typed `func(string) string`, taking a filename, and returing a string representation of the answer.
 - Add the mapping to the function in `pkg/advent_of_code/puzzle_map.go` with the key as `<YEAR>-<DAY>-<PART>` and the value as the name of the function (e.g. `"2020-1-2": Year2020Day1Part2`)

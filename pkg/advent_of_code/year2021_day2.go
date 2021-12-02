@@ -8,8 +8,9 @@ import (
 )
 
 
-func Year2021Day2Part1(filename string) string {
-  input := aoc_utils.ReadFileLines(filename)
+func Year2021Day2Part1() string {
+  content := aoc_utils.DownloadInput(2021, 2)
+  input := aoc_utils.InputToSlice(content)
   horizontal := 0
   depth := 0
 
@@ -29,8 +30,9 @@ func Year2021Day2Part1(filename string) string {
   return strconv.Itoa(horizontal * depth)
 }
 
-func Year2021Day2Part2(filename string) string {
-  input := aoc_utils.ReadFileLines(filename)
+func Year2021Day2Part2() string {
+  content := aoc_utils.DownloadInput(2021, 2)
+  input := aoc_utils.InputToSlice(content)
   horizontal := 0
   depth := 0
   aim := 0

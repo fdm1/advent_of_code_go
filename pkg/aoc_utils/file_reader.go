@@ -1,28 +1,16 @@
 package aoc_utils
 
 import (
+  "fmt"
   "os"
-  "strconv"
-  "strings"
 )
 
-func ReadFileListOfInt(filename string) []int {
-  lines := ReadFileLines(filename)
-  ints := make([]int, len(lines))
-  for i, line := range lines {
-    if line != "" {
-      num, _ := strconv.Atoi(line)
-      ints[i] = num
-    }
-  }
-  return ints
-}
-
-func ReadFileLines(filename string) []string {
+func ReadFile(filename string) string {
   content, err := os.ReadFile(filename)
+
   if err != nil {
-      //Do something
+		fmt.Fprintf(os.Stderr, "Error reading input body: %s\n", err)
+		os.Exit(3)
   }
-  lines := strings.Split(string(content), "\n")
-  return lines[0:len(lines)-1]
+  return string(content)
 }

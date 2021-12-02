@@ -7,8 +7,9 @@ import (
 )
 
 
-func Year2021Day1Part1(filename string) string {
-  inputInts := aoc_utils.ReadFileListOfInt(filename)
+func Year2021Day1Part1() string {
+  content := aoc_utils.DownloadInput(2021, 1)
+  inputInts := aoc_utils.InputToIntSlice(content)
   result := 0
   for i, val := range inputInts {
     if i > 0 && val > inputInts[i-1] {
@@ -19,8 +20,9 @@ func Year2021Day1Part1(filename string) string {
   return strconv.Itoa(result)
 }
 
-func Year2021Day1Part2(filename string) string {
-  inputInts := aoc_utils.ReadFileListOfInt(filename)
+func Year2021Day1Part2() string {
+  content := aoc_utils.DownloadInput(2021, 1)
+  inputInts := aoc_utils.InputToIntSlice(content)
   result := 0
   for i, _ := range inputInts {
     if i > 2 {

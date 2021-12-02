@@ -7,9 +7,10 @@ import (
 )
 
 
-func Year2020Day1Part1(filename string) string {
+func Year2020Day1Part1() string {
   target := 2020
-  inputInts := aoc_utils.ReadFileListOfInt(filename)
+  content := aoc_utils.DownloadInput(2020, 1)
+  inputInts := aoc_utils.InputToIntSlice(content)
   filteredInts := FilterInts(target, inputInts)
 
   for i, valI := range filteredInts {
@@ -23,9 +24,10 @@ func Year2020Day1Part1(filename string) string {
   return "no answer"
 }
 
-func Year2020Day1Part2(filename string) string {
+func Year2020Day1Part2() string {
   target := 2020
-  inputInts := aoc_utils.ReadFileListOfInt(filename)
+  content := aoc_utils.DownloadInput(2020, 1)
+  inputInts := aoc_utils.InputToIntSlice(content)
   filteredInts := FilterInts(target, inputInts)
 
   for _, valI := range filteredInts {

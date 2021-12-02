@@ -2,13 +2,11 @@ package advent_of_code
 
 import (
   "testing"
-
-  "github.com/fdm1/advent_of_code_go/pkg/aoc_utils"
 )
 
 func TestYear2020Day1Part1(t *testing.T) {
-  filename := aoc_utils.TestInput("puzzle_tests/year_2020_day_1")
-  result := Year2020Day1Part1(filename)
+  MockAdventOfCodeInput(2020, 1)
+  result := Year2020Day1Part1()
   expected_result := "514579"
 
   if result != expected_result {
@@ -17,8 +15,8 @@ func TestYear2020Day1Part1(t *testing.T) {
 }
 
 func TestYear2020Day1Part2(t *testing.T) {
-  filename := aoc_utils.TestInput("puzzle_tests/year_2020_day_1")
-  result := Year2020Day1Part2(filename)
+  MockAdventOfCodeInput(2020, 1)
+  result := Year2020Day1Part2()
   expected_result := "241861950"
 
   if result != expected_result {
