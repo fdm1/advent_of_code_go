@@ -1,8 +1,7 @@
-package advent_of_code
+package aoc_utils
 
 import (
   "fmt"
-  "github.com/fdm1/advent_of_code_go/pkg/aoc_utils"
   "github.com/jarcoal/httpmock"
 )
 
@@ -12,7 +11,7 @@ func MockAdventOfCodeInput(year int, day int) {
 
   url := fmt.Sprintf("https://adventofcode.com/%v/day/%v/input", year, day)
   filename := fmt.Sprintf("puzzle_tests/%v_%v", year, day)
-  content := aoc_utils.ReadFile(aoc_utils.TestInput(filename))
+  content := ReadFile(TestInput(filename))
 
   httpmock.RegisterResponder("GET", url,
     httpmock.NewStringResponder(200, content))

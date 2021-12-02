@@ -2,10 +2,11 @@ package advent_of_code
 
 import (
   "testing"
+  "github.com/fdm1/advent_of_code_go/pkg/aoc_utils"
 )
 
 func TestYear2021Day1Part1(t *testing.T) {
-  MockAdventOfCodeInput(2021, 1)
+  aoc_utils.MockAdventOfCodeInput(2021, 1)
   result := Year2021Day1Part1()
   expected_result := "7"
 
@@ -15,7 +16,7 @@ func TestYear2021Day1Part1(t *testing.T) {
 }
 
 func TestYear2021Day1Part2(t *testing.T) {
-  MockAdventOfCodeInput(2021, 1)
+  aoc_utils.MockAdventOfCodeInput(2021, 1)
   result := Year2021Day1Part2()
   expected_result := "5"
 
