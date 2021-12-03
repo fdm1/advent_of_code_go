@@ -46,37 +46,13 @@ func Year2021Day3Part1() string {
 func Year2021Day3Part2() string {
   content := aoc_utils.DownloadInput(2021, 3)
   input := aoc_utils.InputToSlice(content)
-  counts := make([]int, len(strings.Split(input[0], "")))
-
-  for _, val := range input {
-    binaryRow := strings.Split(val, "")
-    for i, binaryVal := range binaryRow {
-      if binaryVal == "1" {
-        counts[i] += 1
-      }
-    }
-  }
-
-  oxygenBinaryCrit := ""
-  co2BinaryCrit := ""
-
-  for _, val := range counts {
-    mostAreOne := val >= len(input) / 2
-    if mostAreOne {
-      oxygenBinaryCrit += "0"
-      co2BinaryCrit += "1"
-    } else {
-      oxygenBinaryCrit += "1"
-      co2BinaryCrit += "0"
-    }
-  }
 
   oxygenBinaryInputs := input
   co2BinaryInputs := input
-  for i, _ := range strings.Split(oxygenBinaryCrit, "") {
+  for i, _ := range strings.Split(input[0], "") {
     oxygenBinaryInputs = Year2021Day3Part2Filter(oxygenBinaryInputs, true, i, "1")
   }
-  for i, _ := range strings.Split(co2BinaryCrit, "") {
+  for i, _ := range strings.Split(input[0], "") {
     co2BinaryInputs = Year2021Day3Part2Filter(co2BinaryInputs, false, i, "0")
   }
 
