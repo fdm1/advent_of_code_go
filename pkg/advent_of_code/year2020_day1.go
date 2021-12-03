@@ -11,7 +11,7 @@ func Year2020Day1Part1() string {
   target := 2020
   content := aoc_utils.DownloadInput(2020, 1)
   inputInts := aoc_utils.InputToIntSlice(content)
-  filteredInts := FilterInts(target, inputInts)
+  filteredInts := Year2020Day1FilterInts(target, inputInts)
 
   for i, valI := range filteredInts {
     for _, valJ := range filteredInts[i:len(filteredInts)] {
@@ -28,7 +28,7 @@ func Year2020Day1Part2() string {
   target := 2020
   content := aoc_utils.DownloadInput(2020, 1)
   inputInts := aoc_utils.InputToIntSlice(content)
-  filteredInts := FilterInts(target, inputInts)
+  filteredInts := Year2020Day1FilterInts(target, inputInts)
 
   for _, valI := range filteredInts {
     for j, valJ := range filteredInts {
@@ -45,7 +45,7 @@ func Year2020Day1Part2() string {
   return "no answer"
 }
 
-func FilterInts(maxInt int, allInts []int) []int {
+func Year2020Day1FilterInts(maxInt int, allInts []int) []int {
   result := []int{}
   for i := range allInts {
     if allInts[i] < maxInt {
