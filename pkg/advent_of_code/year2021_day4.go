@@ -99,7 +99,6 @@ func Year2021Day4Part2(cache bool) string {
     }
   }
 
-  fmt.Println(scores)
   return fmt.Sprintf("%v", scores[len(scores) - 1])
 }
 
