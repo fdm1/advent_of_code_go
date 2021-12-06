@@ -1,5 +1,9 @@
 package aoc_utils
 
+import (
+  "strconv"
+)
+
 func DeleteEmptyFromStringSlice(input []string) []string {
   result := []string{}
   for _, val := range input {
@@ -21,4 +25,13 @@ func StringSliceContainsAll(inputStrings []string, valuesToCheck[]string) bool {
   }
 
   return foundVals == len(valuesToCheck)
+}
+
+func StringSliceToIntSlice(input []string) []int {
+  result := []int{}
+  for _, val := range input {
+    newInt, _ := strconv.Atoi(val)
+    result = append(result, newInt)
+  }
+  return result
 }
