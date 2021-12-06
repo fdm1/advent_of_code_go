@@ -8,7 +8,7 @@ import (
 
 func TestYear2021Day4Part1(t *testing.T) {
   aoc_utils.MockAdventOfCodeInput(2021, 4)
-  result := Year2021Day4Part1()
+  result := Year2021Day4Part1(false)
   expected_result := "4512"
 
   if result != expected_result {
@@ -18,7 +18,7 @@ func TestYear2021Day4Part1(t *testing.T) {
 
 func TestYear2021Day4Part2(t *testing.T) {
   aoc_utils.MockAdventOfCodeInput(2021, 4)
-  result := Year2021Day4Part2()
+  result := Year2021Day4Part2(false)
   expected_result := "1924"
 
   if result != expected_result {

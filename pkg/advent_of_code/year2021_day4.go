@@ -8,8 +8,8 @@ import (
 )
 
 
-func Year2021Day4Part1() string {
-  content := aoc_utils.DownloadInput(2021, 4)
+func Year2021Day4Part1(cache bool) string {
+  content := aoc_utils.DownloadInput(2021, 4, cache)
   input := aoc_utils.InputToSlice(content)
   numbers := strings.Split(input[0], ",")
   boards := [][][]string{}
@@ -52,8 +52,8 @@ func Year2021Day4Part1() string {
   return fmt.Sprintf("diddly squat")
 }
 
-func Year2021Day4Part2() string {
-  content := aoc_utils.DownloadInput(2021, 4)
+func Year2021Day4Part2(cache bool) string {
+  content := aoc_utils.DownloadInput(2021, 4, cache)
   input := aoc_utils.InputToSlice(content)
   numbers := strings.Split(input[0], ",")
   boards := [][][]string{}

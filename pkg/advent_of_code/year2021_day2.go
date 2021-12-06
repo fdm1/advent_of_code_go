@@ -8,8 +8,8 @@ import (
 )
 
 
-func Year2021Day2Part1() string {
-  content := aoc_utils.DownloadInput(2021, 2)
+func Year2021Day2Part1(cache bool) string {
+  content := aoc_utils.DownloadInput(2021, 2, cache)
   input := aoc_utils.InputToSlice(content)
   horizontal := 0
   depth := 0
@@ -30,8 +30,8 @@ func Year2021Day2Part1() string {
   return strconv.Itoa(horizontal * depth)
 }
 
-func Year2021Day2Part2() string {
-  content := aoc_utils.DownloadInput(2021, 2)
+func Year2021Day2Part2(cache bool) string {
+  content := aoc_utils.DownloadInput(2021, 2, cache)
   input := aoc_utils.InputToSlice(content)
   horizontal := 0
   depth := 0

@@ -8,7 +8,17 @@ import (
   "github.com/joho/godotenv"
 )
 
-func DownloadInput(year int, day int) string {
+func DownloadInput(year int, day int, cache bool) string {
+  cacheFilename := fmt.Sprintf("downloads/%v-%d.txt", year, day)
+  if cache {
+    content, err := os.ReadFile(cacheFilename)
+
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error reading input body: %s\n", err)
+    } else {
+      return string(content)
+    }
+  }
   err := godotenv.Load()
 
   url := fmt.Sprintf("https://adventofcode.com/%v/day/%v/input", year, day)
@@ -39,5 +49,14 @@ func DownloadInput(year int, day int) string {
 		fmt.Fprintf(os.Stderr, "Error reading input body: %s\n", err)
 		os.Exit(3)
 	}
+
+  if cache {
+    err := os.WriteFile(cacheFilename, body, 0644)
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error caching input: %s\n", err)
+      os.Exit(3)
+    }
+  }
+
   return string(body)
 }

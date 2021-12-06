@@ -7,9 +7,9 @@ import (
 )
 
 
-func Year2020Day1Part1() string {
+func Year2020Day1Part1(cache bool) string {
   target := 2020
-  content := aoc_utils.DownloadInput(2020, 1)
+  content := aoc_utils.DownloadInput(2020, 1, cache)
   inputInts := aoc_utils.InputToIntSlice(content)
   filteredInts := Year2020Day1FilterInts(target, inputInts)
 
@@ -24,9 +24,9 @@ func Year2020Day1Part1() string {
   return "no answer"
 }
 
-func Year2020Day1Part2() string {
+func Year2020Day1Part2(cache bool) string {
   target := 2020
-  content := aoc_utils.DownloadInput(2020, 1)
+  content := aoc_utils.DownloadInput(2020, 1, cache)
   inputInts := aoc_utils.InputToIntSlice(content)
   filteredInts := Year2020Day1FilterInts(target, inputInts)
 

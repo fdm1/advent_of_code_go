@@ -9,8 +9,8 @@ import (
 )
 
 
-func Year2021Day3Part1() string {
-  content := aoc_utils.DownloadInput(2021, 3)
+func Year2021Day3Part1(cache bool) string {
+  content := aoc_utils.DownloadInput(2021, 3, cache)
   input := aoc_utils.InputToSlice(content)
   counts := make([]int, len(strings.Split(input[0], "")))
 
@@ -43,8 +43,8 @@ func Year2021Day3Part1() string {
   return fmt.Sprintf("%v", epsilon * gamma)
 }
 
-func Year2021Day3Part2() string {
-  content := aoc_utils.DownloadInput(2021, 3)
+func Year2021Day3Part2(cache bool) string {
+  content := aoc_utils.DownloadInput(2021, 3, cache)
   input := aoc_utils.InputToSlice(content)
 
   oxygenBinaryInputs := input

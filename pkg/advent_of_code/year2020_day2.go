@@ -7,8 +7,8 @@ import (
   "github.com/fdm1/advent_of_code_go/pkg/aoc_utils"
 )
 
-func Year2020Day2Part1() string {
-  content := aoc_utils.DownloadInput(2020, 2)
+func Year2020Day2Part1(cache bool) string {
+  content := aoc_utils.DownloadInput(2020, 2, cache)
   inputLines := aoc_utils.InputToSlice(content)
   result := 0
   if len(inputLines) > 0 {
@@ -29,8 +29,8 @@ func Year2020Day2Part1() string {
   return strconv.Itoa(result)
 }
 
-func Year2020Day2Part2() string {
-  content := aoc_utils.DownloadInput(2020, 2)
+func Year2020Day2Part2(cache bool) string {
+  content := aoc_utils.DownloadInput(2020, 2, cache)
   inputLines := aoc_utils.InputToSlice(content)
   result := 0
   if len(inputLines) > 0 {

@@ -7,8 +7,8 @@ import (
 )
 
 
-func Year2021Day1Part1() string {
-  content := aoc_utils.DownloadInput(2021, 1)
+func Year2021Day1Part1(cache bool) string {
+  content := aoc_utils.DownloadInput(2021, 1, cache)
   inputInts := aoc_utils.InputToIntSlice(content)
   result := 0
   for i, val := range inputInts {
@@ -20,8 +20,8 @@ func Year2021Day1Part1() string {
   return strconv.Itoa(result)
 }
 
-func Year2021Day1Part2() string {
-  content := aoc_utils.DownloadInput(2021, 1)
+func Year2021Day1Part2(cache bool) string {
+  content := aoc_utils.DownloadInput(2021, 1, cache)
   inputInts := aoc_utils.InputToIntSlice(content)
   result := 0
   for i, _ := range inputInts {

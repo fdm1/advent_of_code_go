@@ -21,7 +21,7 @@ func main() {
 
 
   function := advent_of_code.PuzzleMap(year, day, part)
-  result := function()
+  result := function(true)
   fmt.Printf("Result: %v\n", result)
 }
 
