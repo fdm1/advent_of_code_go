@@ -9,44 +9,43 @@ import (
 
 func Year2021Day6Part1(cache bool) string {
   content := aoc_utils.DownloadInput(2021, 6, cache)
-  fish := aoc_utils.StringSliceToIntSlice(strings.Split(aoc_utils.InputToSlice(content)[0], ","))
+  fishInts := aoc_utils.StringSliceToIntSlice(strings.Split(aoc_utils.InputToSlice(content)[0], ","))
 
-  fishCounters := make(map[int]int)
-  for i := 0; i < 8; i++ {
-    fishCounters[i] = 0
-  }
-  for _, val := range fish {
-    fishCounters[val] += 1
-  }
-  for i := 0; i < 80; i++ {
-    fishCounters = Y21D6IterateFishOnce(fishCounters)
-  }
-  result := 0
-  for _, val := range fishCounters {
-    result += val
-  }
-  return fmt.Sprintf("%v", result)
+  fishCounters := Y21D6InitializeFish(fishInts)
+  fishCounters = Y21D6IterateFishNTimes(fishCounters, 80)
+  return fmt.Sprintf("%v", Y21D6CountFish(fishCounters))
 }
 
 func Year2021Day6Part2(cache bool) string {
   content := aoc_utils.DownloadInput(2021, 6, cache)
-  fish := aoc_utils.StringSliceToIntSlice(strings.Split(aoc_utils.InputToSlice(content)[0], ","))
+  fishInts := aoc_utils.StringSliceToIntSlice(strings.Split(aoc_utils.InputToSlice(content)[0], ","))
 
+  fishCounters := Y21D6InitializeFish(fishInts)
+  fishCounters = Y21D6IterateFishNTimes(fishCounters, 256)
+  return fmt.Sprintf("%v", Y21D6CountFish(fishCounters))
+}
+
+func Y21D6InitializeFish(inputInts []int) map[int]int {
   fishCounters := make(map[int]int)
-  for i := 0; i <= 8; i++ {
-    fishCounters[i] = 0
-  }
-  for _, val := range fish {
+  for _, val := range inputInts {
     fishCounters[val] += 1
   }
-  for i := 0; i < 256; i++ {
-    fishCounters = Y21D6IterateFishOnce(fishCounters)
-  }
+  return fishCounters
+}
+
+func Y21D6CountFish(fishCounters map[int]int) int {
   result := 0
   for _, val := range fishCounters {
     result += val
   }
-  return fmt.Sprintf("%v", result)
+  return result
+}
+
+func Y21D6IterateFishNTimes(fishCounters map[int]int, times int) map[int]int {
+  for i := 0; i < times; i++ {
+    fishCounters = Y21D6IterateFishOnce(fishCounters)
+  }
+  return fishCounters
 }
 
 
