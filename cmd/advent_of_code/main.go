@@ -2,6 +2,7 @@ package main
 
 import (
   "fmt"
+  "time"
 
   "github.com/fdm1/advent_of_code_go/pkg/advent_of_code"
 )
@@ -21,7 +22,10 @@ func main() {
 
 
   function := advent_of_code.PuzzleMap(year, day, part)
+  start := time.Now()
   result := function(true)
+  duration := time.Since(start)
   fmt.Printf("Result: %v\n", result)
+  fmt.Printf("Ran in %v\n", duration)
 }
 
