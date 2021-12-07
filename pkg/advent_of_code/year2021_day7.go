@@ -12,7 +12,8 @@ func Year2021Day7Part1(cache bool) string {
   positions := aoc_utils.StringSliceToIntSlice(strings.Split(aoc_utils.InputToSlice(content)[0], ","))
   fuelCosts := make(map[int]int)
   minFuel := -1
-  for _, moveTo := range positions {
+  minMax := aoc_utils.IntSliceMinMax(positions)
+  for moveTo := minMax[0]; moveTo <= minMax[1]; moveTo++ {
     if !(fuelCosts[moveTo] > 0) {
       fuelForPosition := 0
       for _, moveFrom := range positions {
@@ -36,7 +37,8 @@ func Year2021Day7Part2(cache bool) string {
   positions := aoc_utils.StringSliceToIntSlice(strings.Split(aoc_utils.InputToSlice(content)[0], ","))
   fuelCosts := make(map[int]int)
   minFuel := -1
-  for _, moveTo := range positions {
+  minMax := aoc_utils.IntSliceMinMax(positions)
+  for moveTo := minMax[0]; moveTo <= minMax[1]; moveTo++ {
     if !(fuelCosts[moveTo] > 0) {
       fuelForPosition := 0
       for _, moveFrom := range positions {
