@@ -15,16 +15,21 @@ func DeleteEmptyFromStringSlice(input []string) []string {
 }
 
 func StringSliceContainsAll(inputStrings []string, valuesToCheck[]string) bool {
-  foundVals := 0
-    for _, valToCheck := range valuesToCheck {
-      for _, inputVal := range inputStrings {
-        if inputVal == valToCheck {
-          foundVals += 1
-      }
+  for _, valToCheck := range valuesToCheck {
+    if !StringSliceContainsChar(inputStrings, valToCheck) {
+      return false
     }
   }
+  return true
+}
 
-  return foundVals == len(valuesToCheck)
+func StringSliceContainsChar(stringSlice []string, valToCheck string) bool {
+  for _, val := range stringSlice {
+    if valToCheck == val {
+      return true
+    }
+  }
+  return false
 }
 
 func StringSliceToIntSlice(input []string) []int {
