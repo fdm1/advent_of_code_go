@@ -2,8 +2,8 @@ package advent_of_code
 
 import "fmt"
 
-func PuzzleMap(year string, day string, part string) func(bool) string {
-  puzzleFunctions := map[string]func(bool) string {
+func PuzzleFunctions() map[string]func(bool) string {
+  return map[string]func(bool) string {
     "2020-1-1": Year2020Day1Part1,
     "2020-1-2": Year2020Day1Part2,
     "2020-2-1": Year2020Day2Part1,
@@ -25,6 +25,8 @@ func PuzzleMap(year string, day string, part string) func(bool) string {
     "2021-8-1": Year2021Day8Part1,
     "2021-8-2": Year2021Day8Part2,
   }
+}
 
-  return puzzleFunctions[fmt.Sprintf("%v-%v-%v", year, day, part)]
+func PuzzleMap(year string, day string, part string) func(bool) string {
+  return PuzzleFunctions()[fmt.Sprintf("%v-%v-%v", year, day, part)]
 }
