@@ -24,6 +24,8 @@ func PuzzleFunctions() map[string]func(bool) string {
     "2021-7-2": Year2021Day7Part2,
     "2021-8-1": Year2021Day8Part1,
     "2021-8-2": Year2021Day8Part2,
+    "2021-9-1": Year2021Day9Part1,
+    "2021-9-2": Year2021Day9Part2,
   }
 }
 

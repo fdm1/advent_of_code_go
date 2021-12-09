@@ -14,7 +14,7 @@ func DownloadInput(year int, day int, cache bool) string {
     content, err := os.ReadFile(cacheFilename)
 
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error reading input body: %s\n", err)
+      fmt.Fprintf(os.Stderr, "Unable to read input for %v-%v. Downloading from AoC ...\n", year, day)
     } else {
       return string(content)
     }
