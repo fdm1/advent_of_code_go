@@ -2,8 +2,9 @@ package main
 
 import (
   "fmt"
-  // "sort"
+  "sort"
   "strings"
+  "strconv"
   "time"
 
   "github.com/fdm1/advent_of_code_go/pkg/advent_of_code"
@@ -13,6 +14,7 @@ import (
 func main() {
   yearNeeded := true
   validYears := ValidYears()
+  sort.Strings(validYears)
   year := ""
   for yearNeeded {
     fmt.Printf("Year: ")
@@ -20,7 +22,13 @@ func main() {
     if aoc_utils.StringSliceContainsString(validYears, year) {
       yearNeeded = false
     } else {
-      fmt.Printf("Year %v is not valid. Valid choices are %v\n\n", year, validYears)
+      validYearInts := []int{}
+      for _, y := range validYears {
+        yearInt, _ := strconv.Atoi(y)
+        validYearInts = append(validYearInts, yearInt)
+      }
+      sort.Ints(validYearInts)
+      fmt.Printf("Year %v is not valid. Valid choices are %v\n\n", year, validYearInts)
     }
   }
 
@@ -33,7 +41,13 @@ func main() {
     if aoc_utils.StringSliceContainsString(validDays, day) {
       dayNeeded = false
     } else {
-      fmt.Printf("Day %v is not valid. Valid choices are %v\n\n", day, validDays)
+      validDayInts := []int{}
+      for _, d := range validDays {
+        dayInt, _ := strconv.Atoi(d)
+        validDayInts = append(validDayInts, dayInt)
+      }
+      sort.Ints(validDayInts)
+      fmt.Printf("Day %v is not valid. Valid choices are %v\n\n", day, validDayInts)
     }
   }
 
