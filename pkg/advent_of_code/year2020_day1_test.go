@@ -8,20 +8,20 @@ import (
 func TestYear2020Day1Part1(t *testing.T) {
   aoc_utils.MockAdventOfCodeInput(2020, 1)
   result := Year2020Day1Part1(false)
-  expected_result := "514579"
+  expectedResult := "514579"
 
-  if result != expected_result {
-    t.Fatalf("actual result %v != expected result %v", result, expected_result)
+  if result != expectedResult {
+    t.Fatalf("actual result %v != expected result %v", result, expectedResult)
   }
 }
 
 func TestYear2020Day1Part2(t *testing.T) {
   aoc_utils.MockAdventOfCodeInput(2020, 1)
   result := Year2020Day1Part2(false)
-  expected_result := "241861950"
+  expectedResult := "241861950"
 
-  if result != expected_result {
-    t.Fatalf("actual result %v != expected result %v", result, expected_result)
+  if result != expectedResult {
+    t.Fatalf("actual result %v != expected result %v", result, expectedResult)
   }
 }
 
@@ -31,16 +31,16 @@ func TestYear2020Day1FilterInts(t *testing.T) {
   inputs = append(inputs, 2)
   inputs = append(inputs, 3)
 
-  expected_result := []int{}
-  expected_result = append(expected_result, 1)
-  expected_result = append(expected_result, 2)
+  expectedResult := []int{}
+  expectedResult = append(expectedResult, 1)
+  expectedResult = append(expectedResult, 2)
 
 
   result := Year2020Day1FilterInts(3, inputs)
 
   for i := range result {
-    if result[i] != expected_result[i] {
-      t.Fatalf("contents don't match (%v vs %v)", result, expected_result)
+    if result[i] != expectedResult[i] {
+      t.Fatalf("contents don't match (%v vs %v)", result, expectedResult)
     }
   }
 }

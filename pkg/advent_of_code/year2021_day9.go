@@ -11,14 +11,14 @@ import (
 
 func Year2021Day9Part1(cache bool) string {
   content := aoc_utils.DownloadInput(2021, 9, cache)
-  intRows := Y21D9SplitRowsIntoInts(aoc_utils.InputToSlice(content))
+  intRows := aoc_utils.InputToSliceOfIntSlices(content)
   lowPoints := Y21D9FindAllLowPoints(intRows)
   return fmt.Sprintf("%v", Y21D9CalculateRisk(lowPoints))
 }
 
 func Year2021Day9Part2(cache bool) string {
   content := aoc_utils.DownloadInput(2021, 9, cache)
-  intRows := Y21D9SplitRowsIntoInts(aoc_utils.InputToSlice(content))
+  intRows := aoc_utils.InputToSliceOfIntSlices(content)
   lowPoints := Y21D9FindAllLowPoints(intRows)
   basinSizes := []int{}
   for point, _ := range lowPoints {
@@ -84,19 +84,6 @@ func Y21D9CalculateRisk(lowPoints map[string]int) int {
     risk += val + 1
   }
   return risk
-}
-
-func Y21D9SplitRowsIntoInts(input []string) [][]int {
-  intRows := [][]int{}
-  for _, row := range input {
-    intRow := []int{}
-    for _, intString := range strings.Split(row, "") {
-      intVal, _ := strconv.Atoi(intString)
-      intRow = append(intRow, intVal)
-    }
-    intRows = append(intRows, intRow)
-  }
-  return intRows
 }
 
 func Y21D9GetBasinInRowFromPoint(point string, intRows [][]int) map[string]int {

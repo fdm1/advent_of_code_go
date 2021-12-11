@@ -8,20 +8,20 @@ import (
 func TestYear2020Day2Part1(t *testing.T) {
   aoc_utils.MockAdventOfCodeInput(2020, 2)
   result := Year2020Day2Part1(false)
-  expected_result := "2"
+  expectedResult := "2"
 
-  if result != expected_result {
-    t.Fatalf("actual result %v != expected result %v", result, expected_result)
+  if result != expectedResult {
+    t.Fatalf("actual result %v != expected result %v", result, expectedResult)
   }
 }
 
 func TestYear2020Day2Part2(t *testing.T) {
   aoc_utils.MockAdventOfCodeInput(2020, 2)
   result := Year2020Day2Part2(false)
-  expected_result := "1"
+  expectedResult := "1"
 
-  if result != expected_result {
-    t.Fatalf("actual result %v != expected result %v", result, expected_result)
+  if result != expectedResult {
+    t.Fatalf("actual result %v != expected result %v", result, expectedResult)
   }
 }
 

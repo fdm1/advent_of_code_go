@@ -8,27 +8,27 @@ import (
 func TestYear2021Day7Part1(t *testing.T) {
   aoc_utils.MockAdventOfCodeInput(2021, 7)
   result := Year2021Day7Part1(false)
-  expected_result := "37"
+  expectedResult := "37"
 
-  if result != expected_result {
-    t.Fatalf("actual result %v != expected result %v", result, expected_result)
+  if result != expectedResult {
+    t.Fatalf("actual result %v != expected result %v", result, expectedResult)
   }
 }
 
 func TestYear2021Day7Part2(t *testing.T) {
   aoc_utils.MockAdventOfCodeInput(2021, 7)
   result := Year2021Day7Part2(false)
-  expected_result := "168"
+  expectedResult := "168"
 
-  if result != expected_result {
-    t.Fatalf("actual result %v != expected result %v", result, expected_result)
+  if result != expectedResult {
+    t.Fatalf("actual result %v != expected result %v", result, expectedResult)
   }
 }
 
 func TestY21D7P2FuelCalculator(t *testing.T) {
   result := Y21D7P2FuelCalculator(11)
-  expected_result := 66
-  if result != expected_result {
-    t.Fatalf("actual result %v != expected result %v", result, expected_result)
+  expectedResult := 66
+  if result != expectedResult {
+    t.Fatalf("actual result %v != expected result %v", result, expectedResult)
   }
 }
