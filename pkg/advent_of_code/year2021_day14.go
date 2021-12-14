@@ -11,6 +11,10 @@ func Year2021Day14Part1(cache bool) string {
   content := aoc_utils.DownloadInput(2021, 14, cache)
   input := aoc_utils.InputToSlice(content)
   inputChars := strings.Split(input[0], "")
+  segmentMap := map[string]int{}
+  for i, _ := range inputChars[0:len(inputChars) - 1] {
+    segmentMap[strings.Join(inputChars[i:i+2], "")] += 1
+  }
 
   steps := [][]string{}
   for _, row := range input[2:len(input)] {
@@ -18,16 +22,21 @@ func Year2021Day14Part1(cache bool) string {
   }
 
   for i := 0; i < 10; i++ {
-    inputChars = Y21D14Iterate(inputChars, steps)
+    fmt.Println(segmentMap)
+    segmentMap = Y21D14Iterate(segmentMap, steps)
   }
 
-  return fmt.Sprintf("%v", Y21D14ScorePt1(inputChars))
+  return fmt.Sprintf("%v", Y21D14CalculateScore(segmentMap, inputChars[0]))
 }
 
 func Year2021Day14Part2(cache bool) string {
   content := aoc_utils.DownloadInput(2021, 14, cache)
   input := aoc_utils.InputToSlice(content)
   inputChars := strings.Split(input[0], "")
+  segmentMap := map[string]int{}
+  for i, _ := range inputChars[0:len(inputChars) - 1] {
+    segmentMap[strings.Join(inputChars[i:i+2], "")] += 1
+  }
 
   steps := [][]string{}
   for _, row := range input[2:len(input)] {
@@ -35,39 +44,45 @@ func Year2021Day14Part2(cache bool) string {
   }
 
   for i := 0; i < 40; i++ {
-    inputChars = Y21D14Iterate(inputChars, steps)
+    segmentMap = Y21D14Iterate(segmentMap, steps)
   }
 
-  return fmt.Sprintf("%v", Y21D14ScorePt1(inputChars))
+  return fmt.Sprintf("%v", Y21D14CalculateScore(segmentMap, inputChars[0]))
 }
 
-func Y21D14Iterate(input []string, steps [][]string) []string {
-  result := []string{}
-  for inputI := 0; inputI < len(input) - 1; inputI++ {
-    result = append(result, input[inputI])
+func Y21D14Iterate(charMap map[string]int, steps [][]string) map[string]int {
+  newCharMap := map[string]int{}
 
-    for _, step := range steps {
-      if fmt.Sprintf("%v%v", input[inputI], input[inputI + 1]) == step[0] {
-        result = append(result, step[1])
-        break  // assume no repeats?
+  foundSegments := []string{}
+  for _, step := range steps {
+    if charMap[step[0]] > 0 {
+      splitStep := strings.Split(step[0], "")
+      newChars := []string{
+        strings.Join([]string{splitStep[0], step[1]}, ""),
+        strings.Join([]string{step[1], splitStep[1]}, ""),
       }
+      for _, char := range newChars { newCharMap[char] += charMap[step[0]] }
+      foundSegments = append(foundSegments, step[0])
     }
   }
-  result = append(result, input[len(input) - 1])
 
-  return result
+  for segment, _ := range charMap {
+    if !aoc_utils.StringSliceContainsString(foundSegments, segment) {
+      newCharMap[segment] += charMap[segment]
+    }
+  }
+
+  return newCharMap
 }
 
-func Y21D14ScorePt1(input []string) int {
-  charCounts := map[string]int{}
-  for _, val := range input {
-    charCounts[val]++
-  }
+func Y21D14CalculateScore(segmentMap map[string]int, firstChar string) int {
+  characterCounts := map[string]int{}
+  for char, val := range segmentMap { characterCounts[strings.Split(char, "")[1]] += val}
+  characterCounts[firstChar] += 1
 
   minCount := -1
   maxCount := -1
-
-  for _, count := range charCounts {
+  for _, count := range characterCounts {
     if minCount == -1 {
       minCount = count
       maxCount = count
@@ -76,5 +91,6 @@ func Y21D14ScorePt1(input []string) int {
       if count > maxCount { maxCount = count }
     }
   }
+
   return maxCount - minCount
 }
