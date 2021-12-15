@@ -1,4 +1,4 @@
-package advent_of_code
+package yYEARdDAY
 
 import (
   "fmt"
@@ -6,13 +6,13 @@ import (
 )
 
 
-func YearYEARDayDAYPart1(cache bool) string {
+func Part1(cache bool) string {
   content := aoc_utils.DownloadInput(YEAR, DAY, cache)
   input := aoc_utils.InputToSlice(content)
   return fmt.Sprintf("%v", input)
 }
 
-func YearYEARDayDAYPart2(cache bool) string {
+func Part2(cache bool) string {
   content := aoc_utils.DownloadInput(YEAR, DAY, cache)
   input := aoc_utils.InputToSlice(content)
   return fmt.Sprintf("%v", input)

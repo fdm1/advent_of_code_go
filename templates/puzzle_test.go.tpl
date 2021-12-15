@@ -1,13 +1,13 @@
-package advent_of_code
+package yYEARdDAY
 
 import (
   "testing"
   "github.com/fdm1/advent_of_code_go/pkg/aoc_utils"
 )
 
-func TestYearYEARDayDAYPart1(t *testing.T) {
+func TestPart1(t *testing.T) {
   aoc_utils.MockAdventOfCodeInput(YEAR, DAY)
-  result := YearYEARDayDAYPart1(false)
+  result := Part1(false)
   expectedResult := "part1_answer"
 
   if result != expectedResult {
@@ -15,9 +15,9 @@ func TestYearYEARDayDAYPart1(t *testing.T) {
   }
 }
 
-// func TestYearYEARDayDAYPart2(t *testing.T) {
+// func TestPart2(t *testing.T) {
 //   aoc_utils.MockAdventOfCodeInput(YEAR, DAY)
-//   result := YearYEARDayDAYPart2(false)
+//   result := Part2(false)
 //   expectedResult := "part2_answer"
 //
 //   if result != expectedResult {
