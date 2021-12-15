@@ -7,7 +7,6 @@ import (
 
 func MockAdventOfCodeInput(year int, day int) {
   httpmock.Activate()
-  // defer httpmock.DeactivateAndReset()
 
   url := fmt.Sprintf("https://adventofcode.com/%v/day/%v/input", year, day)
   filename := fmt.Sprintf("puzzle_tests/%v_%v", year, day)
