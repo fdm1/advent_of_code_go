@@ -22,7 +22,6 @@ func Part1(cache bool) string {
   }
 
   for i := 0; i < 10; i++ {
-    fmt.Println(segmentMap)
     segmentMap = Iterate(segmentMap, steps)
   }
 
