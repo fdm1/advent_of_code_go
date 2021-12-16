@@ -16,3 +16,7 @@ func GridPointToInts(point string) (int, int) {
 func GridIntsToPoint(x int, y int) string {
   return fmt.Sprintf("%v,%v", x, y)
 }
+
+func Infinity() int {
+  return 9999999999999999
+}

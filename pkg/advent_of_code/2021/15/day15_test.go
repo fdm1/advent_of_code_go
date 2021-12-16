@@ -25,21 +25,6 @@ func TestPart2(t *testing.T) {
   }
 }
 
-func TestInitialRisk(t *testing.T) {
-  grid := [][]int{
-    []int{1, 2, 3},
-    []int{4, 5, 6},
-    []int{7, 8, 9},
-    []int{8, 7, 6},
-  }
-  result := InitialRisk(grid)
-  expectedResult := 2 + 3 + 6 + 9 + 6
-
-  if result != expectedResult {
-    t.Fatalf("actual result %v != expected result %v", result, expectedResult)
-  }
-}
-
 func TestExpandGridFull(t *testing.T) {
   gridString := (
     "1163751742\n" +

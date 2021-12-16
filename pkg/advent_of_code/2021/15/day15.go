@@ -8,23 +8,28 @@ import (
 func Part1(cache bool) string {
   content := aoc_utils.DownloadInput(2021, 15, cache)
   grid := aoc_utils.InputToSliceOfIntSlices(content)
-  maxRisk := InitialRisk(grid)
-  endpointRisks := map[string]int{}
-  endpointRisks["0,1"] = grid[0][1]
-  endpointRisks["1,0"] = grid[1][0]
-
+  distances := map[string]int{}
+  nodesToCheck := []string{}
+  for x := 0; x < len(grid); x++ {
+    for y := 0; y < len(grid[0]); y++ {
+      node := aoc_utils.GridIntsToPoint(x,y)
+      if x == 0 && y == 0 {
+        distances[node] = 0
+      } else {
+        distances[node] = aoc_utils.Infinity()
+      }
+    }
+  }
+  currentNode := aoc_utils.GridIntsToPoint(0, 0)
+  targetNode := aoc_utils.GridIntsToPoint(len(grid) - 1, len(grid[0]) - 1)
   running := true
+
   for running {
-    endpointRisks = Move(endpointRisks, grid, maxRisk)
-    if len(endpointRisks) == 1 { running = false }
+    distances, nodesToCheck, currentNode = MoveDijkstra(
+      grid, distances, nodesToCheck, currentNode, targetNode)
+    running = currentNode != targetNode
   }
-
-  risk := 0
-  for _, val := range endpointRisks {
-    risk = val
-  }
-
-  return fmt.Sprintf("%v", risk)
+  return fmt.Sprintf("%v", distances[targetNode])
 }
 
 func Part2(cache bool) string {
@@ -37,67 +42,67 @@ func Part2(cache bool) string {
   grid = ExpandGrid(grid, initialRows, initialColumns)
   grid = ExpandGrid(grid, initialRows, initialColumns)
 
-  maxRisk := InitialRisk(grid)
-  endpointRisks := map[string]int{}
-  endpointRisks["0,1"] = grid[0][1]
-  endpointRisks["1,0"] = grid[1][0]
-
+  distances := map[string]int{}
+  for x := 0; x < len(grid); x++ {
+    for y := 0; y < len(grid[0]); y++ {
+      node := aoc_utils.GridIntsToPoint(x,y)
+      if x == 0 && y == 0 {
+        distances[node] = 0
+      } else {
+        distances[node] = aoc_utils.Infinity()
+      }
+    }
+  }
+  nodesToCheck := []string{}
+  currentNode := aoc_utils.GridIntsToPoint(0, 0)
+  targetNode := aoc_utils.GridIntsToPoint(len(grid) - 1, len(grid[0]) - 1)
   running := true
-  risk := 0
 
   for running {
-    endpointRisks = Move(endpointRisks, grid, maxRisk)
-    if len(endpointRisks) == 1 {
-      for point, riskVal := range endpointRisks {
-        x, y := aoc_utils.GridPointToInts(point)
-        if x == len(grid[0]) - 1 && y == len(grid) - 1 {
-          risk = riskVal
-          running = false
-        }
-      }
-    }
+    distances, nodesToCheck, currentNode = MoveDijkstra(
+      grid, distances, nodesToCheck, currentNode, targetNode)
+    running = currentNode != targetNode
   }
-
-  return fmt.Sprintf("%v", risk)
+  return fmt.Sprintf("%v", distances[targetNode])
 }
 
-// Get a value as a baseline
-func InitialRisk(grid [][]int) int {
-  risk := 0
-  for i, val := range grid[0] {
-    if i != 0 { risk += val }
-  }
-  for i, row := range grid {
-    if i != 0 { risk += row[len(row) - 1] }
-  }
+func MoveDijkstra(grid [][]int, distances map[string]int, nodesToCheck []string, currentNode string, targetNode string) (map[string]int, []string, string) {
+  newDistances := distances
+  currentX, currentY := aoc_utils.GridPointToInts(currentNode)
+  neighbors := []string{}
+  newNodesToCheck := []string{}
 
-  return risk
-}
+  if currentX < len(grid[0]) - 1 { neighbors = append(neighbors, aoc_utils.GridIntsToPoint(currentX+1, currentY)) }
+  if currentY < len(grid) - 1 { neighbors = append(neighbors, aoc_utils.GridIntsToPoint(currentX, currentY+1)) }
+  if currentY > 0 { neighbors = append(neighbors, aoc_utils.GridIntsToPoint(currentX, currentY-1)) }
+  if currentX > 0 { neighbors = append(neighbors, aoc_utils.GridIntsToPoint(currentX-1, currentY)) }
 
-func Move(pathEndpoints map[string]int, grid [][]int, maxRisk int) map[string]int {
-  newEndpoints := map[string]int{}
-  for endpoint, currentRisk := range pathEndpoints {
-    x, y := aoc_utils.GridPointToInts(endpoint)
-    if x < len(grid[0]) - 1 {
-      newPoint := aoc_utils.GridIntsToPoint(x+1, y)
-      newRisk := currentRisk + grid[x+1][y]
-      if newEndpoints[newPoint] == 0 && newRisk <= maxRisk {
-        newEndpoints[newPoint] = newRisk
-      } else if newEndpoints[newPoint] > 0 && newRisk < newEndpoints[newPoint] {
-        newEndpoints[newPoint] = newRisk
-      }
-    }
-    if y < len(grid) - 1 {
-      newPoint := aoc_utils.GridIntsToPoint(x, y+1)
-      newRisk := currentRisk + grid[x][y+1]
-      if newEndpoints[newPoint] == 0 && newRisk <= maxRisk {
-        newEndpoints[newPoint] = newRisk
-      } else if newEndpoints[newPoint] > 0 && newRisk < newEndpoints[newPoint] {
-        newEndpoints[newPoint] = newRisk
-      }
+  currentNodeDistance := distances[currentNode]
+
+  for _, node := range neighbors {
+    neighborX, neighborY := aoc_utils.GridPointToInts(node)
+    potentialNewDistance := grid[neighborX][neighborY] + currentNodeDistance
+    if potentialNewDistance < distances[node] {
+      newDistances[node] = potentialNewDistance
+      newNodesToCheck = append(newNodesToCheck, node)
     }
   }
-  return newEndpoints
+  for _, node := range nodesToCheck {
+    if node != currentNode {
+      newNodesToCheck = append(newNodesToCheck, node)
+    }
+  }
+
+  newCurrentNode := currentNode
+  smallestNewDistance := aoc_utils.Infinity()
+  for _, node := range nodesToCheck {
+    if newDistances[node] < smallestNewDistance {
+      smallestNewDistance = newDistances[node]
+      newCurrentNode = node
+    }
+  }
+
+  return newDistances, newNodesToCheck, newCurrentNode
 }
 
 func ExpandGrid(grid [][]int, rows int, columns int) [][]int {
