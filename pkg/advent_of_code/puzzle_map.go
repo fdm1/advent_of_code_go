@@ -20,6 +20,7 @@ import (
   "github.com/fdm1/advent_of_code_go/pkg/advent_of_code/2021/13"
   "github.com/fdm1/advent_of_code_go/pkg/advent_of_code/2021/14"
   "github.com/fdm1/advent_of_code_go/pkg/advent_of_code/2021/15"
+  "github.com/fdm1/advent_of_code_go/pkg/advent_of_code/2021/17"
 )
 
 func PuzzleFunctions() map[string]func(bool) string {
@@ -58,6 +59,8 @@ func PuzzleFunctions() map[string]func(bool) string {
     "2021-14-2": y21d14.Part2,
     "2021-15-1": y21d15.Part1,
     "2021-15-2": y21d15.Part2,
+    "2021-17-1": y2021d17.Part1,
+    "2021-17-2": y2021d17.Part2,
   }
 }
 
