@@ -24,13 +24,13 @@ func TestPart1(t *testing.T) {
 //     t.Fatalf("actual result %v != expected result %v", result, expectedResult)
 //   }
 // }
-
-func TestReduceRow(t *testing.T) {
-  input := "[1,2]"
-  result, _ := ReduceRow(input)
-  expectedResult := "7"
-
-  if result != expectedResult {
-    t.Fatalf("actual result %v != expected result %v", result, expectedResult)
-  }
-}
+//
+// func TestReduceRow(t *testing.T) {
+//   input := "[1,2]"
+//   result, _ := ReduceRow(input)
+//   expectedResult := "7"
+//
+//   if result != expectedResult {
+//     t.Fatalf("actual result %v != expected result %v", result, expectedResult)
+//   }
+// }
